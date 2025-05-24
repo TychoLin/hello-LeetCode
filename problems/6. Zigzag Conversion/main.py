@@ -5,15 +5,17 @@ class Solution(object):
         :type numRows: int
         :rtype: str
         """
-        results = [[] for i in range(numRows)]
+        if numRows == 1 or numRows >= len(s):
+            return s
+
+        results = [''] * numRows
         row = 0
-        diff = 1
+        change_direction = False
+
         for c in s:
-            row = min(row, numRows - 1)
-            results[row].append(c)
-            if row == numRows - 1:
-                diff = -1
-            if row == 0:
-                diff = 1
-            row += diff
-        return "".join(("".join(word) for word in results))
+            results[row] += c
+            if row == 0 or row == numRows - 1:
+                change_direction = not change_direction
+            row += 1 if change_direction else -1
+
+        return ''.join(results)
