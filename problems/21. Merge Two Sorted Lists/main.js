@@ -18,7 +18,7 @@ var mergeTwoLists = function (list1, list2) {
     cur = cur.next;
   }
 
-  cur.next = list1 !== null ? list1 : list2;
+  cur.next = list1 || list2;
 
   return sentinel.next;
 };
