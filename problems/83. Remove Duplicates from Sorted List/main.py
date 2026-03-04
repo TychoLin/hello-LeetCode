@@ -22,9 +22,8 @@ class Solution:
         def helper(head):
             if not head or not head.next:
                 return head
-            if head.val == head.next.val:
-                while head.next and head.val == head.next.val:
-                    head = head.next
+            while head.next and head.val == head.next.val:
+                head = head.next
             head.next = helper(head.next)
             return head
 
